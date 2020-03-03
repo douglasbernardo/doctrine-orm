@@ -1,0 +1,33 @@
+<?php
+
+namespace Douglas\Doctrine\Helper;
+
+
+use Doctrine\ORM\EntityManager;
+use Doctrine\ORM\EntityManagerInterface;
+use Doctrine\ORM\Tools\Setup;
+
+
+
+
+class EntiryManagerFactory
+{
+
+	public function getEntityManager(): EntityManagerInterface
+	{
+		/** return EntiryManagerInterface */
+		$rootDir = __DIR__ . '/../..';
+		$config = Setup::createAnnotationMetadataConfiguration(
+			[$rootDir . '/src'],
+			 true
+		);
+		$connection = [
+			'driver' => 'pdo_sqlite',
+			'path' => $rootDir . '/var/data/banco.sqlite'
+		];
+		return EntityManager::create($connection, $config);
+	}	
+
+}
+
+
