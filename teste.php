@@ -1,10 +1,10 @@
 <?php
 
-use Douglas\Doctrine\Helper\EntiryManagerFactory;
+use Douglas\Doctrine\Helper\EntityManagerFactory;
 
 require_once __DIR__ . '/vendor/autoload.php';
 
-$entityManagerFactory = new EntiryManagerFactory();
+$entityManagerFactory = new EntityManagerFactory();
 $entityManager = $entityManagerFactory->getEntityManager();
 
 var_dump($entityManager->getConnection());

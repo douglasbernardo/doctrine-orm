@@ -10,19 +10,23 @@ use Doctrine\ORM\Tools\Setup;
 
 
 
-class EntiryManagerFactory
+class EntityManagerFactory
 {
 
 	public function getEntityManager(): EntityManagerInterface
 	{
-		/** return EntiryManagerInterface */
+		/** return EntityManagerInterface */
 		$rootDir = __DIR__ . '/../..';
 		$config = Setup::createAnnotationMetadataConfiguration(
 			[$rootDir . '/src'],
 			 true
 		);
 		$connection = [
-			'driver' => 'pdo_sqlite',
+			'host' => 'localhost',
+			'user' => 'root',
+			'dbname' => 'aluno',
+			'password' => 'douglas@melo',
+			'driver' => 'mysqli',
 			'path' => $rootDir . '/var/data/banco.sqlite'
 		];
 		return EntityManager::create($connection, $config);
