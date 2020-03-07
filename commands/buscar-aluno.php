@@ -1,5 +1,6 @@
 <?php
 
+
 use Douglas\Doctrine\Entity\Aluno;
 use Douglas\Doctrine\Helper\EntityManagerFactory;
 
@@ -15,5 +16,5 @@ $alunoRepository = $EntityManager->getRepository(Aluno::class);
 $alunoList = $alunoRepository->findAll();
 
 foreach($alunoList as $aluno){
-    echo "ID: {$aluno->getid()}\nNome : {$aluno->getNome()}\n\n";
+    echo "ID: {$aluno->getid()}\nNome : {$aluno->getNome()}\nIdade: {$aluno->getIdade()}\n\n";
 }
