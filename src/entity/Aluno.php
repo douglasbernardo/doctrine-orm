@@ -2,6 +2,10 @@
 
 namespace Douglas\Doctrine\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
+use Telefone;
+
 /**
  * @Entity
  */
@@ -24,6 +28,16 @@ class Aluno{
      * @column(type="integer")
      */
     private $idade;
+
+    /**
+     * @OneToMany(targetEntity="Telefone" mappedBy="aluno")
+     */
+    private $telefones;
+
+    public function __construct()
+    {
+        $this->telefones = new  ArrayCollection();
+    }
 
     public function getId() : int
     {
@@ -49,5 +63,17 @@ class Aluno{
     public function setIdade(int $idade)
     {
         $this->idade = $idade;
+    }
+
+    public function addTelefone(Telefone $telefone) 
+    {
+        $this->telefone->add($telefone);
+        $telefone->setAluno($this);
+        return $this;
+    }
+
+    public function getTelefone() : Collection 
+    {
+        return $this->telefones;
     }
 }
