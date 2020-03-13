@@ -13,6 +13,7 @@ $id = $argv[1];
 $novoNome = $argv[2];
 $novaIdade = $argv[3];
 
+
 $aluno = $entityManager->find(Aluno::class, $id);
 
 $aluno->setNome($novoNome);
