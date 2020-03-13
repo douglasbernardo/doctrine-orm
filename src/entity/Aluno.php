@@ -4,7 +4,7 @@ namespace Douglas\Doctrine\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
-use Telefone;
+use Douglas\Doctrine\Entity\Telefone;
 
 /**
  * @Entity
@@ -30,7 +30,7 @@ class Aluno{
     private $idade;
 
     /**
-     * @OneToMany(targetEntity="Telefone" mappedBy="aluno")
+     * @OneToMany(targetEntity="Telefone", mappedBy="aluno" )
      */
     private $telefones;
 
@@ -52,6 +52,7 @@ class Aluno{
     public function setNome(string $nome): self
     {
         $this->nome = $nome;
+
         return $this;
     }
 
@@ -67,12 +68,13 @@ class Aluno{
 
     public function addTelefone(Telefone $telefone) 
     {
-        $this->telefone->add($telefone);
+        $this->telefones->add($telefone);
         $telefone->setAluno($this);
+        
         return $this;
     }
 
-    public function getTelefone() : Collection 
+    public function getTelefones() : Collection 
     {
         return $this->telefones;
     }
