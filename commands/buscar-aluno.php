@@ -17,10 +17,11 @@ $alunoRepository = $EntityManager->getRepository(Aluno::class);
 $alunoList = $alunoRepository->findAll();
 
 foreach($alunoList as $aluno){
-    $telefones = $aluno->getTelefones() ->map(function(Telefone $telefone){
+    $telefones = $aluno->getTelefones()->map(function(Telefone $telefone){
       return $telefone->getNumero();  
     })
     ->toArray();
-    echo "ID: {$aluno->getid()}\nNome : {$aluno->getNome()}\nIdade: {$aluno->getIdade()}\nTelefone : " . implode(',',$telefones) ;
+    echo "ID: {$aluno->getid()}\nNome : {$aluno->getNome()}\nIdade: {$aluno->getIdade()}";
+    echo " Telefone : "  . implode(',',$telefones) . "\n\n";
   
 }
