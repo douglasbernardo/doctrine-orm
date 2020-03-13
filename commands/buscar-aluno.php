@@ -2,6 +2,7 @@
 
 
 use Douglas\Doctrine\Entity\Aluno;
+use Douglas\Doctrine\Entity\Telefone;
 use Douglas\Doctrine\Helper\EntityManagerFactory;
 
 require_once __DIR__ . '/../vendor/autoload.php';
@@ -16,5 +17,10 @@ $alunoRepository = $EntityManager->getRepository(Aluno::class);
 $alunoList = $alunoRepository->findAll();
 
 foreach($alunoList as $aluno){
-    echo "ID: {$aluno->getid()}\nNome : {$aluno->getNome()}\nIdade: {$aluno->getIdade()}\n\n";
+    $telefones = $aluno->getTelefones() ->map(function(Telefone $telefone){
+      return $telefone->getNumero();  
+    })
+    ->toArray();
+    echo "ID: {$aluno->getid()}\nNome : {$aluno->getNome()}\nIdade: {$aluno->getIdade()}\nTelefone : " . implode(',',$telefones) ;
+  
 }
