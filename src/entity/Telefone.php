@@ -1,7 +1,7 @@
 <?php
 
-use Douglas\Doctrine\Entity;
-use Douglas\Doctrine\Entity\Aluno;
+namespace Douglas\Doctrine\Entity;
+
 
 /**
  * @Entity
@@ -31,7 +31,8 @@ class Telefone{
     }
     public function setId(int $id) : self
     {
-        return $this->Id;
+        $this->id = $id;
+        return $this;
 
     }
     public function getNumero() : string
@@ -39,9 +40,10 @@ class Telefone{
         return $this->numero;
 
     }
-    public function setNumero(string $numero) : self{
-
-        return $this->Numero;
+    public function setNumero(string $numero) : self
+    {
+        $this->numero = $numero;
+        return $this;
     }
     public function getAluno() : Aluno
     {
