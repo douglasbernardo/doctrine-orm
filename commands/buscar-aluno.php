@@ -10,11 +10,9 @@ require_once __DIR__ . '/../vendor/autoload.php';
 $EntityManagerFactory = new EntityManagerFactory();
 $EntityManager = $EntityManagerFactory->getEntityManager();
 
-$alunoRepository = $EntityManager->getRepository(Aluno::class);
-
-/** @var aluno[] $alunoList */
-
-$alunoList = $alunoRepository->findAll();
+$dql = "SELECT aluno FROM Douglas\\Doctrine\\Entity\\Aluno aluno WHERE aluno.id = 13 or aluno.nome = 'Douglas Bernardo' ";
+$query = $EntityManager->createQuery($dql);
+$alunoList = $query->getResult();
 
 foreach($alunoList as $aluno){
     $telefones = $aluno->getTelefones()->map(function(Telefone $telefone){

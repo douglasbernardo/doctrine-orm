@@ -30,7 +30,7 @@ class Aluno{
     private $idade;
 
     /**
-     * @OneToMany(targetEntity="Telefone", mappedBy="aluno")
+     * @OneToMany(targetEntity="Telefone", mappedBy="aluno",fetch = "EAGER")
      */
     private $telefones;
 
