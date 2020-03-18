@@ -30,13 +30,19 @@ class Aluno{
     private $idade;
 
     /**
-     * @OneToMany(targetEntity="Telefone", mappedBy="aluno" )
+     * @OneToMany(targetEntity="Telefone", mappedBy="aluno")
      */
     private $telefones;
+
+    /**
+     * @ManyToMany(targetEntity="Curso", mappedBy="alunos")
+     */
+    private $cursos;
 
     public function __construct()
     {
         $this->telefones = new  ArrayCollection();
+        $this->cursos = new ArrayCollection();
     }
 
     public function getId() : int
@@ -77,5 +83,23 @@ class Aluno{
     public function getTelefones() : Collection 
     {
         return $this->telefones;
+    }
+
+    public function addCursos(curso $curso) : self
+    {
+        //Se o curso ja existir na lista ele não faz nada so continua executando o codigos
+        if($this->cursos->contains($curso) )
+        {
+            return $this;
+        }
+        $this->cursos->add($curso);
+        $curso->addAluno($this);
+
+        return $this;
+    }
+
+    public function getCursos() : Collection
+    {
+        return $this->cursos;
     }
 }
