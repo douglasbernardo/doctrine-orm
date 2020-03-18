@@ -23,5 +23,4 @@ foreach($alunoList as $aluno){
     ->toArray();
     echo "ID: {$aluno->getid()}\nNome : {$aluno->getNome()}\nIdade: {$aluno->getIdade()}\n";
     echo "Telefone : "  . implode(',',$telefones) . "\n\n";
-  
 }
