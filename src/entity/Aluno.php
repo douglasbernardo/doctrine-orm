@@ -7,7 +7,7 @@ use Doctrine\Common\Collections\Collection;
 use Douglas\Doctrine\Entity\Telefone;
 
 /**
- * @Entity
+ * @Entity(repositoryClass="Douglas\Doctrine\Repository\AlunoRepository")
  */
 
 class Aluno{
