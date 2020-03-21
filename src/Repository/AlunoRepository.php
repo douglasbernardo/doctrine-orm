@@ -13,7 +13,7 @@ class AlunoRepository extends EntityRepository
     {
         $classeAluno = Aluno::class;
         $entityManager = $this->getEntityManager();
-        $dql = "SELECT a, b, c FROM $classeAluno a JOIN a.telefones t JOIN a.cursos c";
+        $dql = "SELECT a, t, c FROM $classeAluno a JOIN a.telefones t JOIN a.cursos c";
         $query = $entityManager->createQuery($dql);
 
         return $query->getResult();
