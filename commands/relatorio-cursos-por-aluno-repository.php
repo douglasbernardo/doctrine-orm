@@ -41,5 +41,3 @@ foreach ($alunos as $aluno) {
     }
     echo "\n";
 }
-
-print_r($debugStack);;
